@@ -30,3 +30,21 @@ console.log(mergedObj.profession);
 
 const mergedObj4 = merge({surname: 'Kulshreshtha', city: 'Gwalior', address: ['G1', 'G2', 'G3']}, {color: 'Wheatish'});
 console.log(mergedObj2.surname);
+
+interface Lengthy {
+    length: number;
+}
+
+function countAndDescribe<T extends Lengthy>(element: T): [T, string] {
+    let descriptionText = 'Got No Value';
+    if (element.length === 1) {
+      descriptionText = 'Got 1 Element';
+    } else if (element.length > 1) {
+      descriptionText = 'Got ' + element.length + ' elements.';
+    }
+
+    return [element, descriptionText];
+}
+
+// console.log(countAndDescribe(['Yahoo']));
+// console.log(countAndDescribe(10));This is not possible because number does not have length property
