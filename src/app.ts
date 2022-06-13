@@ -111,3 +111,20 @@ numStorage.addItem(30);
 numStorage.addItem(10);
 numStorage.removeItem(10);
 console.log(numStorage.getItems());
+
+interface CourseGoal {
+    title: string;
+    description: string;
+    completeUntil: Date;
+}
+
+function createCourseGoal(title: string, description: string, date: Date): CourseGoal {
+    let courseGoal: Partial<CourseGoal> = {};// Here you are delaying the assignment of object properties
+    courseGoal.title = title;
+    courseGoal.description = description;
+    courseGoal.completeUntil = date;
+    return courseGoal as CourseGoal;// Here you have to have type casting because you have object property assignment
+}
+
+const names: Readonly<string[]> = ['Abhijeet', 'Kulshreshtha'];
+// names.push('Abby');here push shall give an error because names is essentialy a Readonly Array
