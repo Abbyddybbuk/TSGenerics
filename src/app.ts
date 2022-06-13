@@ -80,3 +80,34 @@ function extractAndConvert<T extends object, U extends keyof T>(
 
 extractAndConvert({ name: "Abhijeet" }, "name"); // if you do not pass name as 2nd parameter then you will get an error as 2nd parameter has toe be property of object passed
 // in first param
+
+class DataStorage<T extends string | number | boolean> {
+    private data: T[] = [];
+
+    addItem(item: T) {
+        this.data.push(item);
+    }
+
+    removeItem(item: T) {
+        this.data.splice(this.data.indexOf(item), 1);
+    }
+
+    getItems() {
+        return [...this.data];
+    }
+}
+
+const textStorage = new DataStorage<string>();
+textStorage.addItem('Abhijeet');
+textStorage.addItem('Ankur');
+textStorage.addItem('Kulshreshtha');
+textStorage.removeItem('Ankur');
+console.log(textStorage.getItems());
+
+const numStorage = new DataStorage<number>();
+numStorage.addItem(10);
+numStorage.addItem(20);
+numStorage.addItem(30);
+numStorage.addItem(10);
+numStorage.removeItem(10);
+console.log(numStorage.getItems());
